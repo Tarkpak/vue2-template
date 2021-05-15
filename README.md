@@ -1,4 +1,4 @@
-# vue2-music
+# vue2-example
 
 ## Project setup
 ```
