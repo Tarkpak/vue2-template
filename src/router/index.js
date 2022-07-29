@@ -24,7 +24,7 @@ const routes = [
   },
   {
     path: '*',
-    component: () => import('../views/error.vue'),
+    component: () => import('../views/404.vue'),
   },
 ];
 
