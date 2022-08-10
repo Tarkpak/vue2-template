@@ -1,0 +1,36 @@
+name: test
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  my_first_job:
+    name: my first job
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: print a greeting
+        env:
+          PROXY: socks5://127.0.0.1:7890
+        run: |
+          yarn
+          yarn build
+          echo $PROXY
+      - name: Upload output file
+        uses: actions/upload-artifact@v3
+        with:
+          name: dist-file
+          path: dist
+  # my_second_job:
+  #   name: my second job
+  #   needs: [my_first_job] # 执行前置条件：第一个任务执行完毕
+  #   runs_on: ubuntu-latest
+  # example-job:
+  #   steps:
+  #     - name: Download a single artifact
+  #       uses: actions/download-artifact@v3
+  #       with:
+  #         name: dist-file
