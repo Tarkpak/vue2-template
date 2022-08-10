@@ -25,9 +25,6 @@ export default {
       name: 'yangsheng'
     };
   },
-  components: {
-    HelloWorld,
-  },
   methods: {
     handleEnterUP(e) {
       console.log(e);

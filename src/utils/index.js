@@ -7,7 +7,7 @@ export default {
    */
   debounce(fn, delay = 1000) {
     var timer
-    return function() {
+    return function () {
       timer && clearTimeout(timer)
       timer = setTimeout(() => {
         fn.apply(this, arguments)
@@ -24,9 +24,12 @@ export default {
     let currentParenName = ''
     for (let [index, path] of pathList.entries()) {
       path = path.slice(1, -4)
+      if (path.includes('index')) path = path.slice(0, -6)
       if (path.match(/\//g).length > 1) {
         const pathArr = path.split('/')
-        if (pathArr.length > 3) {
+        // 移除空格
+        pathArr.shift();
+        if (pathArr.length > 2) {
           if (currentParenName === pathArr[1]) {
             menuList[index - 1].subMenus.push({
               index: path,
@@ -49,7 +52,7 @@ export default {
         } else {
           menuList.push({
             index: path,
-            text: pathArr[1]
+            text: path.slice(1)
           })
         }
       } else {

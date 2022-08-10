@@ -6,6 +6,8 @@ console.log(views.keys())
 Vue.use(VueRouter)
 const routers = []
 views.keys().forEach(item => {
+  // if (item.includes('login')) debugger;
+
   let name = item.slice(2, -4).toLowerCase()
   if (name.includes('index')) name = name.slice(0, -6)
   if (name.includes('_')) return

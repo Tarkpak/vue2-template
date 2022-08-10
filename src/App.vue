@@ -7,11 +7,10 @@
         <el-menu
           :default-active="activeIndex"
           router
-          class="el-menu-demo"
-          @select="handleSelect"
           background-color="#545c64"
           text-color="#fff"
           active-text-color="#ffd04b"
+          @select="handleSelect"
         >
           <template v-for="menu in menuData" :index="menu.path">
             <!-- 有子菜单的时候，就用 el-submenu，再绑个序号 index -->
@@ -57,30 +56,32 @@
 import utils from '@/utils'
 const views = require.context('./views', true, /\.vue$/)
 
-
 export default {
   created() {
     this.menuData = utils.genMenuList(views.keys())
+    console.log('menuData:', this.menuData)
   },
   data() {
     return {
       activeIndex: '/home',
-      menuData: []
+      menuData: [],
     }
   },
   methods: {
     handleSelect(params) {
       console.log(params)
-    }
-  }
-};
+    },
+  },
+}
 </script>
 
-
-<style lang="scss" >
+<style lang="scss">
 * {
   margin: 0;
   padding: 0;
+  .el-menu {
+    height: calc(100vh - 60px);
+  }
   .el-header,
   .el-footer {
     background-color: rgb(84, 92, 100);
