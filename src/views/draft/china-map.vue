@@ -4,30 +4,31 @@
 
 <script>
 import * as echarts from 'echarts';
+import geoJson from '@/assets/map/china-new.json'
+
 const data = [
   {
-    name: '上海',
+    name: '310000',
     value: 9000,
   },
   {
-    name: '江苏',
+    name: '500000',
     value: 8000,
   },
   {
-    name: '青海',
+    name: '520000',
     value: 600,
   },
 ];
 
 export default {
+  mounted() {
+    console.log('geoJSON:', geoJson)
+    this.init();
+  },
   methods: {
     async init() {
-      const url = '@/assets/map/china-new.json';
-      const res = await fetch(url);
-      chinaGeoJson = await res.json();
-      console.log('chinaGeoJson:', chinaGeoJson);
-
-      echarts.registerMap('china', chinaGeoJson);
+      echarts.registerMap('china', geoJson);
       const myChart = echarts.init(document.getElementById('chart'));
 
       myChart.setOption({
@@ -46,6 +47,11 @@ export default {
             name: '测试指标',
             type: 'map',
             map: 'china',
+            roam: true,
+            nameProperty: 'id',
+            label: {
+              // show: true,
+            },
             data,
           },
         ],
