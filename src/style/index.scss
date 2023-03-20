@@ -4,6 +4,14 @@
 @import './var.scss';
 // @import './reset.scss'
 
+@font-face {
+	font-family: 'pingfang';
+	src: url('@/assets/font/PingFang-SC-Regular.ttf');
+}
+
+body {
+	font-family: 'pingfang', system-ui, monospace;
+}
 
 /* 解决 h1 标签在 webkit 内核浏览器中文字大小失效问题 */
 :-webkit-any(article, aside, nav, section) h1 {
