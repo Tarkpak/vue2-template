@@ -4,6 +4,7 @@ module.exports = {
     devtool: undefined,
   },
   devServer: {
+    compress: false,
     port: 1998,
     proxy: {
       '/hbpu': {

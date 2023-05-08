@@ -1,5 +1,6 @@
 const http = require('http');
 const fs = require('fs');
+const path = require('path')
 
 // 创建 HTTP 服务器
 const server = http.createServer((req, res) => {
@@ -12,7 +13,7 @@ const server = http.createServer((req, res) => {
 
   // 定时读取文件并将数据发送给客户端
   const timerId = setInterval(() => {
-    fs.readFile(filePath, (err, data) => {
+    fs.readFile(path.join(__dirname, filePath), (err, data) => {
       if (err) {
         res.statusCode = 500;
         console.log(err)
