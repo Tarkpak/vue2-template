@@ -14,7 +14,7 @@ module.exports = {
         },
       },
       '/api': {
-        target: 'http://localhost:3001',  // 代理目标地址
+        target: 'http://localhost:3000',  // 代理目标地址
         changeOrigin: true,  // 改变源地址
         pathRewrite: {
           '^/api': ''  // 请求地址重写
